@@ -75,7 +75,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1602)
 
     def test_checkout_final_test_2(self):
-        self.assertEqual(checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1602)
+        self.assertEqual(checkout('LGCKAQXFOSKZGIWHNRNDITVBUUEOZXPYAVFDEPTBMQLYJRSMJCWH'), 1602)
 
 
 if __name__ == '__main__':
