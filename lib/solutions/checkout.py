@@ -105,7 +105,9 @@ def checkout(skus):
     items_counter = {i:product_list.count(i) for i in product_list}
 
     # Fill missing counts
-    items_counter
+    for item_type in PRICE_UNIT.keys():
+        if item_type not in items_counter.keys():
+            items_counter.update({item_type: 0})
 
     total_price = 0
 
