@@ -245,7 +245,8 @@ def checkout(skus):
         items_counter[item]['price'] = products_price
 
     # Now we have the price for each item, we can apply the last rule
-    print(items_counter)
+    import pprint
+    pprint.pprint(items_counter)
     total_price = sum([data['price'] for item, data in items_counter.items()])
 
     return total_price
