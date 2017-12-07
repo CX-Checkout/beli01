@@ -125,15 +125,17 @@ def deserialize(skus):
     return skus
 
 
-def mix_and_match_filter(items):
+def mix_and_match_filter(products):
     # Naive approach: because we have 5 items that can be mixed, let's convert the ones in the offer in another
     # fake letter.
     # Let's first convert our count of these mix-and-match products in a list
-    # {'S': 4, 'T': 1, 'X': 1, 'Y': 2} => [S, S, S, S, T, X, Y, Y]
+    # {'S': {'count': 4}, 'T': {'count': 1}, 'X': {'count': 1}, 'Y': {'count': 2}} => [S, S, S, S, T, X, Y, Y]
     # Then convert groups of 3 in our factice MIX_STXYZ and take the remaining ones that don't enter
     # in the mix-and-match, [Y, Y] in this case, to give a [MIX_STXYZ, MIX_STXYZ, Y, Y]
     # and apply the general rules
-
+    unit_product_list = []
+    for item_type, data in products.items():
+        unit_product_list += [item_type] *
     return items
 
 
