@@ -72,6 +72,7 @@ class TestCheckout(unittest.TestCase):
         self.assertEqual(checkout('STXS'), 62)
 
     def test_checkout_final_test_1(self):
+        print('FINAL TEST 1')
         self.assertEqual(checkout('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ'), 1602)
 
     def test_checkout_final_test_2(self):
