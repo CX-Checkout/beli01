@@ -1,0 +1,1 @@
+- format not precised for skus in CHK_R1
