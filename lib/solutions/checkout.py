@@ -55,8 +55,6 @@ def deserialize(skus):
     for sku in skus:
         if sku not in PRICE_UNIT.keys():
             raise IllegalInput('Product not recognised')
-        if sku != '':
-            skus_list.append(sku)
 
     return skus
 
@@ -101,6 +99,9 @@ def checkout(skus):
         product_list = deserialize(skus)
     except IllegalInput:
         return -1
+
+    if not product_list:
+        return 0
 
     # Count the number of items per product
     items_counter = {i:product_list.count(i) for i in product_list}
