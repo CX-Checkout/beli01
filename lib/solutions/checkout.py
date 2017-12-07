@@ -1,13 +1,17 @@
 
 
 PRICE_UNIT = {
-    'A': 50,
-    'B': 30,
-    'C': 20,
-    'D': 15,
-    'E': 40,
-    'F': 10
+    'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60, 'K': 80, 'L': 90,
+    'M': 15, 'N': 40, 'O': 10, 'P': 50, 'Q': 30, 'R': 50, 'S': 30, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 90,
+    'Y': 10, 'Z': 50
 }
+
+| U    | 40    | 3U get one U free      |
+| V    | 50    | 2V for 90, 3V for 130  |
+| W    | 20    |                        |
+| X    | 90    |                        |
+| Y    | 10    |                        |
+| Z    | 50
 
 
 SAME_PRODUCT_OFFERS = {
@@ -26,6 +30,32 @@ SAME_PRODUCT_OFFERS = {
         'number': 2,
         'price': 45,
         'priority': 1
+    }],
+    'H': [{
+            'number': 10,
+            'price': 80,
+            'priority': 1
+        },
+        {
+            'number': 5,
+            'price': 45,
+            'priority': 2
+        }
+    ],
+    'K': [{
+        'number': 2,
+        'price': 150,
+        'priority': 1
+    }],
+    'P': [{
+        'number': 5,
+        'price': 200,
+        'priority': 1
+    }],
+    'Q': [{
+        'number': 3,
+        'price': 80,
+        'priority': 1
     }]
 }
 
@@ -39,6 +69,16 @@ INTER_PRODUCT_OFFERS = {
     'F': {
         'number': 3,
         'target': 'F',
+        'price': 0
+    },
+    'N': {
+        'number': 3,
+        'target': 'M',
+        'price': 0
+    },
+    'R': {
+        'number': 3,
+        'target': 'Q',
         'price': 0
     }
 }
