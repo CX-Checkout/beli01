@@ -107,8 +107,12 @@ def checkout(skus):
 
     for item_type, offer in INTER_PRODUCT_OFFERS:
         offer_nb = items_counter[item_type] / offer['number']
-        target_item = offer['target']
-
+        target_item_type = offer['target']
+        if offer['price'] == 0:
+            nb_remaining_items = items_counter[target_item_type] - offer_nb
+            if nb_remaining_items < 0:
+                nb_remaining_items = 0
+            items_counter[target_item_type] = nb_remaining_items
 
     for item, number in items_counter.items():
         # For each product, count the total price
