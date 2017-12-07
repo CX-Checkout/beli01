@@ -60,6 +60,7 @@ def deserialize(skus):
 
 
 def calculate_price(item_type, number):
+    print('Calculate price for {}'.format(item_type))
     # First check if there is a special offer.
     if item_type not in SAME_PRODUCT_OFFERS.keys():
         return PRICE_UNIT[item_type] * number
@@ -67,7 +68,7 @@ def calculate_price(item_type, number):
     # Now we know that's a special offer, we should know how many items are affected by the promotions
     offer_information = SAME_PRODUCT_OFFERS[item_type]
     sorted_offers = sorted(offer_information, key=lambda x: x['priority'])
-
+    print(sorted_offers)
     item_total_price = 0
     remaining_product_number = number
 
@@ -75,7 +76,7 @@ def calculate_price(item_type, number):
 
         # Check the number of special offers per product
         number_of_offers = number / offer_information['number']
-
+        
         # Get the number of affected products
         affected_product_number = number_of_offers * offer_information['number']
         remaining_product_number -= affected_product_number
@@ -84,6 +85,7 @@ def calculate_price(item_type, number):
 
     # Check the number of products not usable by any special offer
     item_total_price += remaining_product_number * PRICE_UNIT[item_type]
+    print('Price for {}: {}'.format(item_type, item_total_price))
 
     return item_total_price
 
@@ -105,7 +107,7 @@ def checkout(skus):
 
     # Count the number of items per product
     items_counter = {i:product_list.count(i) for i in product_list}
-
+    print(items_counter)
     # Fill missing counts
     for item_type in PRICE_UNIT.keys():
         if item_type not in items_counter.keys():
