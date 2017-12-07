@@ -150,12 +150,13 @@ def mix_and_match_filter(products):
     remaining_list = unit_product_list[-remaining_letters:]
 
     print mix_match_products
-    # Reset mix-match products missing counts
-    for item_type in INTER_PRODUCT_MIX['products']:
-        converted_list[item_type]['count'] = 0
 
+    # Reset mix-match products missing counts
+    converted_list = {i: {'count': 0, 'price': 0} for i in INTER_PRODUCT_MIX['products']}
+    print converted_list
     # And add any mix-and-match, if any
-    converted_list = {i: {'count': remaining_list.count(i), 'price': 0} for i in remaining_list}
+    converted_list.update({i: {'count': remaining_list.count(i), 'price': 0} for i in remaining_list})
+    print converted_list
     # Fill missing counts
     # for item_type in INTER_PRODUCT_MIX['products']:
     #     if item_type not in converted_list.keys():
