@@ -106,7 +106,7 @@ def checkout(skus):
 
     total_price = 0
 
-    for item_type, offer in INTER_PRODUCT_OFFERS:
+    for item_type, offer in INTER_PRODUCT_OFFERS.items():
         offer_nb = items_counter[item_type] / offer['number']
         target_item_type = offer['target']
         if offer['price'] == 0:
