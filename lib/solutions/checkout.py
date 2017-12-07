@@ -75,15 +75,21 @@ def calculate_price(item_type, number):
     item_total_price = 0
     remaining_product_number = number
 
-    for special_offer in SAME_PRODUCT_OFFERS[item_type]
+    for special_offer in sorted_offers:
 
-    # Check the number of special offers per product
-    number_of_offers = number / offer_information['number']
+        # Check the number of special offers per product
+        number_of_offers = number / offer_information['number']
 
-    # Check the number of products not usable by the special offer
-    left_over_products = number % offer_information['number']
+        # Get the number of affected products
+        affected_product_number = number_of_offers * offer_information['number']
+        remaining_product_number -= affected_product_number
 
-    return number_of_offers * offer_information['price'] + left_over_products * PRICE_UNIT[item_type]
+        item_total_price += number_of_offers * offer_information['price']
+
+    # Check the number of products not usable by any special offer
+    item_total_price += remaining_product_number * PRICE_UNIT[item_type]
+
+    return item_total_price
 
 
 # noinspection PyUnusedLocal
