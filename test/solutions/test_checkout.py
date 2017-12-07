@@ -26,6 +26,15 @@ class TestCheckout(unittest.TestCase):
     def test_checkout_inter_product_for_E_and_special_offer_and_remaining_for_B_products(self):
         self.assertEqual(checkout('BBEE'), 110)
 
+    def test_checkout_inter_product_for_F_products(self):
+        self.assertEqual(checkout('FF'), 20)
+
+    def test_checkout_inter_product_for_F_products(self):
+        self.assertEqual(checkout('FFF'), 20)
+
+    def test_checkout_inter_product_and_remaining_for_F_products(self):
+        self.assertEqual(checkout('FFFF'), 30)
+
 
 if __name__ == '__main__':
     unittest.main()

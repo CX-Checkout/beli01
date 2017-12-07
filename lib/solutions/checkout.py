@@ -5,7 +5,8 @@ PRICE_UNIT = {
     'B': 30,
     'C': 20,
     'D': 15,
-    'E': 40
+    'E': 40,
+    'F': 10
 }
 
 
@@ -33,6 +34,11 @@ INTER_PRODUCT_OFFERS = {
     'E': {
         'number': 2,
         'target': 'B',
+        'price': 0
+    },
+    'F': {
+        'number': 2,
+        'target': 'F',
         'price': 0
     }
 }
