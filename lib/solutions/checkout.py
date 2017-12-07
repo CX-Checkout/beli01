@@ -60,12 +60,7 @@ SAME_PRODUCT_OFFERS = {
             'price': 90,
             'priority': 2
         }
-    ],
-    'MIX_STXYZ': [{
-        'number': 3,
-        'price': 45,
-        'priority': 1
-    }]
+    ]
 }
 
 
@@ -174,6 +169,7 @@ def calculate_price(item_type, number):
     # First check if there is a special offer.
     if item_type not in SAME_PRODUCT_OFFERS.keys():
         no_discount_price = PRICE_UNIT[item_type] * number
+
         # print('Price for {}: {}'.format(item_type, no_discount_price))
         return no_discount_price
 
@@ -240,13 +236,10 @@ def checkout(skus):
     for item, information in items_counter.items():
         # For each product, count the total price
         # And add it to the total of each product
-        print item, information
         products_price = calculate_price(item, information['count'])
         items_counter[item]['price'] = products_price
 
     # Now we have the price for each item, we can apply the last rule
-    import pprint
-    pprint.pprint(items_counter)
     total_price = sum([data['price'] for item, data in items_counter.items()])
 
     return total_price
