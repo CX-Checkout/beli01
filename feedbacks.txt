@@ -1,2 +1,3 @@
 - format not precised for skus in CHK_R1
 - Give some assertion examples
+- Only realised now about the test folder...
