@@ -149,7 +149,7 @@ def mix_and_match_filter(products):
     converted_list = {i: {'count': remaining_list.count(i), 'price': 0} for i in remaining_list}
 
     # Fill missing counts
-    for item_type in INTER_PRODUCT_MIX['products'].keys():
+    for item_type in INTER_PRODUCT_MIX['products']:
         if item_type not in converted_list.keys():
             converted_list.update({item_type: {'count': 0, 'price': 0}})
 
