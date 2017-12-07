@@ -6,13 +6,6 @@ PRICE_UNIT = {
     'Y': 10, 'Z': 50
 }
 
-| U    | 40    | 3U get one U free      |
-| V    | 50    | 2V for 90, 3V for 130  |
-| W    | 20    |                        |
-| X    | 90    |                        |
-| Y    | 10    |                        |
-| Z    | 50
-
 
 SAME_PRODUCT_OFFERS = {
     'A': [{
@@ -56,7 +49,18 @@ SAME_PRODUCT_OFFERS = {
         'number': 3,
         'price': 80,
         'priority': 1
-    }]
+    }],
+    'V': [{
+            'number': 3,
+            'price': 130,
+            'priority': 1
+        },
+        {
+            'number': 2,
+            'price': 90,
+            'priority': 2
+        }
+    ]
 }
 
 
@@ -79,6 +83,11 @@ INTER_PRODUCT_OFFERS = {
     'R': {
         'number': 3,
         'target': 'Q',
+        'price': 0
+    },
+    'U': {
+        'number': 4,
+        'target': 'U',
         'price': 0
     }
 }
