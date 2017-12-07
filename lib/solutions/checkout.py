@@ -1,5 +1,29 @@
+
+PRICE_UNIT = {
+    'A': 50,
+    'B': 30,
+    'C': 20,
+    'D': 10
+}
+
+SPECIAL_OFFERS = {
+    'A': {
+        'number': 3,
+        'price': 130
+    },
+    'B': {
+        'number': 2,
+        'price': 45
+    }
+}
+
+
 def deserialize(skus):
     return skus.replace(' ', '').split(',')
+
+
+def calculate_price(item_type, number):
+
 
 
 # noinspection PyUnusedLocal
@@ -15,6 +39,10 @@ def checkout(skus):
     items_counter = {i:product_list.count(i) for i in product_list}
 
     # For each product, count the total price
+    total_price = 0
+
+    for item, number in items_counter:
+        item_total_price = calculate_price(item, number)
 
     # Sum the total of each product
 
