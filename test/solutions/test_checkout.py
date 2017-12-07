@@ -15,53 +15,53 @@ class TestMixAndMatchFilter(unittest.TestCase):
                                                'MIX_STXYZ': {'count': 1, 'price': 0}})
 
 
-class TestCheckout(unittest.TestCase):
-
-    def test_checkout_special_offer_2_for_A_products(self):
-        self.assertEqual(checkout('AAAAA'), 200)
-
-    def test_checkout_special_offer_1_and_2_for_A_products(self):
-        self.assertEqual(checkout('AAAAAAAA'), 330)
-
-    def test_checkout_special_offer_1_and_2_and_remaining_for_A_products(self):
-        self.assertEqual(checkout('AAAAAAAAA'), 380)
-
-    def test_checkout_special_offer_for_B_products(self):
-        self.assertEqual(checkout('BB'), 45)
-
-    def test_checkout_special_offer_and_remaining_for_B_products(self):
-        self.assertEqual(checkout('BBB'), 75)
-
-    def test_checkout_inter_product_for_E_and_special_offer_for_B_products(self):
-        self.assertEqual(checkout('BEE'), 80)
-
-    def test_checkout_inter_product_for_E_and_special_offer_and_remaining_for_B_products(self):
-        self.assertEqual(checkout('BBEE'), 110)
-
-    def test_checkout_inter_product_for_F_products(self):
-        self.assertEqual(checkout('FF'), 20)
-
-    def test_checkout_inter_product_for_F_products(self):
-        self.assertEqual(checkout('FFF'), 20)
-
-    def test_checkout_inter_product_and_remaining_for_F_products(self):
-        self.assertEqual(checkout('FFFF'), 30)
-
-    def test_checkout_inter_product_mix_not_applies_for_2_products(self):
-        self.assertEqual(checkout('XY'), 37)
-
-    def test_checkout_inter_product_mix_applies_for_3_products_of_3_different_types(self):
-        self.assertEqual(checkout('XYZ'), 45)
-
-    def test_checkout_inter_product_mix_applies_for_3_products_but_only_2_different_types(self):
-        self.assertEqual(checkout('XXZ'), 45)
-
-    def test_checkout_inter_product_mix_applies_for_3_products_but_only_1_type(self):
-        self.assertEqual(checkout('XXX'), 45)
-
-    def test_checkout_inter_product_for_KK_products(self):
-        self.assertEqual(checkout('KK'), 120)
-
+# class TestCheckout(unittest.TestCase):
+#
+#     def test_checkout_special_offer_2_for_A_products(self):
+#         self.assertEqual(checkout('AAAAA'), 200)
+#
+#     def test_checkout_special_offer_1_and_2_for_A_products(self):
+#         self.assertEqual(checkout('AAAAAAAA'), 330)
+#
+#     def test_checkout_special_offer_1_and_2_and_remaining_for_A_products(self):
+#         self.assertEqual(checkout('AAAAAAAAA'), 380)
+#
+#     def test_checkout_special_offer_for_B_products(self):
+#         self.assertEqual(checkout('BB'), 45)
+#
+#     def test_checkout_special_offer_and_remaining_for_B_products(self):
+#         self.assertEqual(checkout('BBB'), 75)
+#
+#     def test_checkout_inter_product_for_E_and_special_offer_for_B_products(self):
+#         self.assertEqual(checkout('BEE'), 80)
+#
+#     def test_checkout_inter_product_for_E_and_special_offer_and_remaining_for_B_products(self):
+#         self.assertEqual(checkout('BBEE'), 110)
+#
+#     def test_checkout_inter_product_for_F_products(self):
+#         self.assertEqual(checkout('FF'), 20)
+#
+#     def test_checkout_inter_product_for_F_products(self):
+#         self.assertEqual(checkout('FFF'), 20)
+#
+#     def test_checkout_inter_product_and_remaining_for_F_products(self):
+#         self.assertEqual(checkout('FFFF'), 30)
+#
+#     def test_checkout_inter_product_mix_not_applies_for_2_products(self):
+#         self.assertEqual(checkout('XY'), 37)
+#
+#     def test_checkout_inter_product_mix_applies_for_3_products_of_3_different_types(self):
+#         self.assertEqual(checkout('XYZ'), 45)
+#
+#     def test_checkout_inter_product_mix_applies_for_3_products_but_only_2_different_types(self):
+#         self.assertEqual(checkout('XXZ'), 45)
+#
+#     def test_checkout_inter_product_mix_applies_for_3_products_but_only_1_type(self):
+#         self.assertEqual(checkout('XXX'), 45)
+#
+#     def test_checkout_inter_product_for_KK_products(self):
+#         self.assertEqual(checkout('KK'), 120)
+#
     def test_checkout_inter_product_for_SSSZ_products(self):
         self.assertEqual(checkout('SSSZ'), 65)
 

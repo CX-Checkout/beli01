@@ -160,6 +160,8 @@ def mix_and_match_filter(products):
 
     # And add any mix-and-match, if any
     converted_list.update({'MIX_STXYZ': {'count': number_of_groups_of_3, 'price': 0}})
+    print converted_list
+
     products.update(converted_list)
 
     return products
