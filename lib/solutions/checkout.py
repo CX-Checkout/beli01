@@ -29,8 +29,14 @@ def deserialize(skus):
         return []
 
     # Split different products
-    skus =
-    return skus.replace(' ', '').split(',')
+    skus = skus.replace(' ', '').split(',')
+
+    # Check if they are in the allowed values
+    for sku in skus:
+        if sku not in PRICE_UNIT.keys():
+            raise IllegalInput('Product not recognised')
+
+    return skus
 
 
 def calculate_price(item_type, number):
