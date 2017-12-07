@@ -8,14 +8,35 @@ PRICE_UNIT = {
 }
 
 
-SPECIAL_OFFERS = {
-    'A': {
-        'number': 3,
-        'price': 130
-    },
+SAME_PRODUCT_OFFERS = {
+    'A': [
+        {
+            'number': 5,
+            'price': 200,
+            'priority': 1
+        },
+        {
+            'number': 3,
+            'price': 130,
+            'priority': 2
+        }
+    ],
     'B': {
         'number': 2,
         'price': 45
+    }
+}
+
+
+INTER_PRODUCT_OFFERS = {
+    'E': {
+        'number': 2,
+        'target': {
+            'B':
+                {
+                    'price': 0
+                }
+        }
     }
 }
 
@@ -44,11 +65,11 @@ def deserialize(skus):
 
 def calculate_price(item_type, number):
     # First check if there is a special offer.
-    if item_type not in SPECIAL_OFFERS.keys():
+    if item_type not in SAME_PRODUCT_OFFERS.keys():
         return PRICE_UNIT[item_type] * number
 
     # Now we know that's a special offer, we should know how many items are affected by the promotions
-    offer_information = SPECIAL_OFFERS[item_type]
+    offer_information = SAME_PRODUCT_OFFERS[item_type]
 
     # Check the number of special offers per product
     number_of_offers = number / offer_information['number']
