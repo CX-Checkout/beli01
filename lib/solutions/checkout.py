@@ -63,7 +63,9 @@ def calculate_price(item_type, number):
     print('Calculate price for {}'.format(item_type))
     # First check if there is a special offer.
     if item_type not in SAME_PRODUCT_OFFERS.keys():
-        return PRICE_UNIT[item_type] * number
+        no_discount_price = PRICE_UNIT[item_type] * number
+        print('Price for {}: {}'.format(item_type, no_discount_price))
+        return no_discount_price
 
     # Now we know that's a special offer, we should know how many items are affected by the promotions
     offer_information = SAME_PRODUCT_OFFERS[item_type]
@@ -75,8 +77,8 @@ def calculate_price(item_type, number):
     for offer_information in sorted_offers:
 
         # Check the number of special offers per product
-        number_of_offers = number / offer_information['number']
-        
+        number_of_offers = remaining_product_number / offer_information['number']
+
         # Get the number of affected products
         affected_product_number = number_of_offers * offer_information['number']
         remaining_product_number -= affected_product_number
