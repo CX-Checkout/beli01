@@ -139,7 +139,8 @@ def mix_and_match_filter(products):
     if not mix_match_products:
         return products
 
-    for item_type, data in mix_match_products.items():
+    # should be sorted out by most expensive to less expensive products
+    for item_type, data in sorted(mix_match_products.items(), key=lambda x: PRICE_UNIT[x], reverse=True):
         unit_product_list += [item_type] * data['count']
 
     # print unit_product_list
