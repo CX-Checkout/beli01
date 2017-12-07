@@ -144,11 +144,17 @@ def mix_and_match_filter(products):
     print unit_product_list
     # print unit_product_list
     number_of_groups_of_3 = len(unit_product_list) / 3
+    print number_of_groups_of_3
     remaining_letters = len(unit_product_list) % 3
     # print remaining_letters
     remaining_list = unit_product_list[-remaining_letters:]
 
     print mix_match_products
+    # Reset mix-match products missing counts
+    for item_type in INTER_PRODUCT_MIX['products']:
+        converted_list[item_type]['count'] = 0
+
+    # And add any mix-and-match, if any
     converted_list = {i: {'count': remaining_list.count(i), 'price': 0} for i in remaining_list}
     # Fill missing counts
     # for item_type in INTER_PRODUCT_MIX['products']:
