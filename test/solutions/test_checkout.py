@@ -38,11 +38,14 @@ class TestCheckout(unittest.TestCase):
     def test_checkout_inter_product_mix_not_applies_for_2_products(self):
         self.assertEqual(checkout('XY'), 37)
 
-    def test_checkout_inter_product_mix_applies_for_3_products(self):
+    def test_checkout_inter_product_mix_applies_for_3_products_of_3_different_types(self):
         self.assertEqual(checkout('XYZ'), 45)
 
-    def test_checkout_inter_product_mix_applies_for_3_products(self):
-        self.assertEqual(checkout('XYZ'), 45)
+    def test_checkout_inter_product_mix_applies_for_3_products_but_only_2_different_types(self):
+        self.assertEqual(checkout('XXZ'), 45)
+
+    def test_checkout_inter_product_mix_applies_for_3_products_but_only_1_type(self):
+        self.assertEqual(checkout('XXX'), 45)
 
 
 if __name__ == '__main__':
