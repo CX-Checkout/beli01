@@ -135,7 +135,15 @@ def mix_and_match_filter(products):
     # and apply the general rules
     unit_product_list = []
     for item_type, data in products.items():
-        unit_product_list += [item_type] *
+        unit_product_list += [item_type] * data['count']
+
+    number_of_groups_of_3 = len(unit_product_list) / 3
+    remaining_letters = len(unit_product_list) % 3
+
+    remaining_list = unit_product_list[-remaining_letters]
+
+    
+
     return items
 
 
