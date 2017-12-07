@@ -137,7 +137,7 @@ def mix_and_match_filter(products):
 
     # Only get the items involved in the mix-and-match
     mix_match_products = {key: product for key, product in products.items() if key in INTER_PRODUCT_MIX['products']}
-    
+    print(mix_match_products)
     for item_type, data in mix_match_products.items():
         unit_product_list += [item_type] * data['count']
 
@@ -211,7 +211,7 @@ def checkout(skus):
 
     # Count the number of items per product, and associated price
     items_counter = {i: {'count': product_list.count(i), 'price': 0} for i in product_list}
-    print(items_counter)
+
     # Fill missing counts
     for item_type in PRICE_UNIT.keys():
         if item_type not in items_counter.keys():
@@ -237,8 +237,6 @@ def checkout(skus):
         items_counter[item]['price'] = products_price
 
     # Now we have the price for each item, we can apply the last rule
-
-
     total_price = sum([data['price'] for item, data in items_counter.items()])
 
     return total_price
