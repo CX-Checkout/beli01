@@ -7,7 +7,12 @@ class TestMixAndMatchFilter(unittest.TestCase):
 
     def test_mix_and_match(self):
         self.assertEqual(mix_and_match_filter({'S': {'count': 4, 'price': 0}}),
-                                              {'S': {'count': 1, 'price': 0}, 'MIX_STXYZ': {'count': 1, 'price': 0}})
+                                              {'S': {'count': 1, 'price': 0},
+                                               'T': {'count': 0, 'price': 0},
+                                               'X': {'count': 0, 'price': 0},
+                                               'Y': {'count': 0, 'price': 0},
+                                               'Z': {'count': 0, 'price': 0},
+                                               'MIX_STXYZ': {'count': 1, 'price': 0}})
 
 
 class TestCheckout(unittest.TestCase):
