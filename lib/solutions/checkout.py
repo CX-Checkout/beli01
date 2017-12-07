@@ -37,7 +37,7 @@ SAME_PRODUCT_OFFERS = {
     ],
     'K': [{
         'number': 2,
-        'price': 150,
+        'price': 120,
         'priority': 1
     }],
     'P': [{
