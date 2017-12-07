@@ -1,6 +1,12 @@
 import unittest
 
-from lib.solutions.checkout import checkout
+from lib.solutions.checkout import checkout, mix_and_match_filter
+
+
+class TestMixAndMatchFilter(unittest.TestCase):
+
+    def test_mix_and_match(self):
+        self.assertEqual(mix_and_match_filter({'S': 4}), {'MIX_STXYZ': 1, 'S': 1})
 
 
 class TestCheckout(unittest.TestCase):
