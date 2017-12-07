@@ -3,7 +3,7 @@
 PRICE_UNIT = {
     'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60, 'K': 70, 'L': 90,
     'M': 15, 'N': 40, 'O': 10, 'P': 50, 'Q': 30, 'R': 50, 'S': 20, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 17,
-    'Y': 20, 'Z': 21, 'MIX_STXYZ': -666
+    'Y': 20, 'Z': 21, 'MIX_STXYZ': 45
 }
 
 
@@ -137,7 +137,8 @@ def mix_and_match_filter(products):
 
     # Only get the items involved in the mix-and-match
     mix_match_products = {key: product for key, product in products.items() if key in INTER_PRODUCT_MIX['products']}
-    print(mix_match_products)
+    if not mix_match_products:
+        return products
 
     for item_type, data in mix_match_products.items():
         unit_product_list += [item_type] * data['count']
@@ -146,8 +147,7 @@ def mix_and_match_filter(products):
     number_of_groups_of_3 = len(unit_product_list) / 3
     remaining_letters = len(unit_product_list) % 3
 
-    print(mix_match_products)
-
+    print(remaining_letters)
     remaining_list = unit_product_list[-remaining_letters]
     converted_list = {i: {'count': remaining_list.count(i), 'price': 0} for i in remaining_list}
 
@@ -165,17 +165,17 @@ def mix_and_match_filter(products):
 
 
 def calculate_price(item_type, number):
-    print('Calculate price for {}'.format(item_type))
+    # print('Calculate price for {}'.format(item_type))
     # First check if there is a special offer.
     if item_type not in SAME_PRODUCT_OFFERS.keys():
         no_discount_price = PRICE_UNIT[item_type] * number
-        print('Price for {}: {}'.format(item_type, no_discount_price))
+        # print('Price for {}: {}'.format(item_type, no_discount_price))
         return no_discount_price
 
     # Now we know that's a special offer, we should know how many items are affected by the promotions
     offer_information = SAME_PRODUCT_OFFERS[item_type]
     sorted_offers = sorted(offer_information, key=lambda x: x['priority'])
-    print(sorted_offers)
+
     item_total_price = 0
     remaining_product_number = number
 
@@ -192,7 +192,7 @@ def calculate_price(item_type, number):
 
     # Check the number of products not usable by any special offer
     item_total_price += remaining_product_number * PRICE_UNIT[item_type]
-    print('Price for {}: {}'.format(item_type, item_total_price))
+    # print('Price for {}: {}'.format(item_type, item_total_price))
 
     return item_total_price
 
@@ -215,12 +215,12 @@ def checkout(skus):
     # Count the number of items per product, and associated price
     items_counter = {i: {'count': product_list.count(i), 'price': 0} for i in product_list}
 
+    items_counter = mix_and_match_filter(items_counter)
+
     # Fill missing counts
     for item_type in PRICE_UNIT.keys():
         if item_type not in items_counter.keys():
             items_counter.update({item_type: {'count': 0, 'price': 0}})
-
-    items_counter = mix_and_match_filter(items_counter)
 
     total_price = 0
     for item_type, offer in INTER_PRODUCT_OFFERS.items():
