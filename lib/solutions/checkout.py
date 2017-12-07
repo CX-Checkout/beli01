@@ -137,11 +137,11 @@ def mix_and_match_filter(products):
 
     # Only get the items involved in the mix-and-match
     mix_match_products = {key: product for key, product in products.items() if key in INTER_PRODUCT_MIX['products']}
-    print(mix_match_products)
-
+    
     for item_type, data in mix_match_products.items():
         unit_product_list += [item_type] * data['count']
 
+    print unit_product_list
     number_of_groups_of_3 = len(unit_product_list) / 3
     remaining_letters = len(unit_product_list) % 3
 
