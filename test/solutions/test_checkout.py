@@ -35,6 +35,15 @@ class TestCheckout(unittest.TestCase):
     def test_checkout_inter_product_and_remaining_for_F_products(self):
         self.assertEqual(checkout('FFFF'), 30)
 
+    def test_checkout_inter_product_mix_not_applies_for_2_products(self):
+        self.assertEqual(checkout('XY'), 37)
+
+    def test_checkout_inter_product_mix_applies_for_3_products(self):
+        self.assertEqual(checkout('XYZ'), 45)
+
+    def test_checkout_inter_product_mix_applies_for_3_products(self):
+        self.assertEqual(checkout('XYZ'), 45)
+
 
 if __name__ == '__main__':
     unittest.main()

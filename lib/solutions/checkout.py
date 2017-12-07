@@ -194,7 +194,9 @@ def checkout(skus):
         products_price = calculate_price(item, information['count'])
         items_counter[item]['price'] = products_price
 
-    print(items_counter.items())
-    total_price = sum([item['price'] for item in items_counter.items()])
+    # Now we have the price for each item, we can apply the last rule
+
+
+    total_price = sum([data['price'] for item, data in items_counter.items()])
 
     return total_price
