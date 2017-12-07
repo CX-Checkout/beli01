@@ -98,10 +98,10 @@ INTER_PRODUCT_OFFERS = {
 }
 
 
-INTER_PRODUCT_MIX = [{
+INTER_PRODUCT_MIX = {
     'products': ['S', 'T', 'X', 'Y', 'Z'],
     'price': 45
-}]
+}
 
 
 class IllegalInput(Exception):
@@ -141,9 +141,18 @@ def mix_and_match_filter(products):
     remaining_letters = len(unit_product_list) % 3
 
     remaining_list = unit_product_list[-remaining_letters]
+    converted_list = {i: {'count': remaining_list.count(i), 'price': 0} for i in remaining_list}
 
+    # Fill missing counts
+    for item_type in INTER_PRODUCT_MIX['products'].keys():
+        if item_type not in converted_list.keys():
+            converted_list.update({item_type: {'count': 0, 'price': 0}})
+
+    # And add any mix-and-match, if any
+    converted_list.update({'MIX_STXYZ': number_of_groups_of_3})
+
+    products.update(converted_list)
     
-
     return items
 
 
