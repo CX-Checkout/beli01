@@ -139,9 +139,11 @@ def mix_and_match_filter(products):
     if not mix_match_products:
         return products
 
-    # should be sorted out by most expensive to less expensive products
-    for item_type, data in sorted(mix_match_products.items(), key=lambda x: PRICE_UNIT[x], reverse=True):
+    for item_type, data in mix_match_products.items():
         unit_product_list += [item_type] * data['count']
+
+    # should be sorted out by most expensive to less expensive products
+    unit_product_list = sorted(unit_product_list, key=lambda x: PRICE_UNIT[x], reverse=True)
 
     # print unit_product_list
     number_of_groups_of_3 = len(unit_product_list) / 3
