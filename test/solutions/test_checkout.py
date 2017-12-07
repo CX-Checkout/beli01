@@ -62,6 +62,15 @@ class TestCheckout(unittest.TestCase):
     def test_checkout_inter_product_for_KK_products(self):
         self.assertEqual(checkout('KK'), 120)
 
+    def test_checkout_inter_product_for_SSSZ_products(self):
+        self.assertEqual(checkout('SSSZ'), 65)
+
+    def test_checkout_inter_product_for_ZZZS_products(self):
+        self.assertEqual(checkout('ZZZS'), 65)
+
+    def test_checkout_inter_product_for_STXS_products(self):
+        self.assertEqual(checkout('STXS'), 62)
+
 
 if __name__ == '__main__':
     unittest.main()
