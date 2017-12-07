@@ -70,6 +70,12 @@ def calculate_price(item_type, number):
 
     # Now we know that's a special offer, we should know how many items are affected by the promotions
     offer_information = SAME_PRODUCT_OFFERS[item_type]
+    sorted_offers = sorted(offer_information, key=lambda x: x['priority'])
+
+    item_total_price = 0
+    remaining_product_number = number
+
+    for special_offer in SAME_PRODUCT_OFFERS[item_type]
 
     # Check the number of special offers per product
     number_of_offers = number / offer_information['number']
