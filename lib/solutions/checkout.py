@@ -55,7 +55,8 @@ def deserialize(skus):
     for sku in skus:
         if sku not in PRICE_UNIT.keys():
             raise IllegalInput('Product not recognised')
-        skus_list.append(sku)
+        if sku != '':
+            skus_list.append(sku)
 
     return skus
 
