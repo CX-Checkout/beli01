@@ -31,12 +31,8 @@ SAME_PRODUCT_OFFERS = {
 INTER_PRODUCT_OFFERS = {
     'E': {
         'number': 2,
-        'target': {
-            'B':
-                {
-                    'price': 0
-                }
-        }
+        'target': 'B',
+        'price': 0
     }
 }
 
@@ -109,9 +105,15 @@ def checkout(skus):
 
     total_price = 0
 
+    for item_type, offer in INTER_PRODUCT_OFFERS:
+        offer_nb = items_counter[item_type] / offer['number']
+        target_item = offer['target']
+
+
     for item, number in items_counter.items():
         # For each product, count the total price
         # And add it to the total of each product
+
         total_price += calculate_price(item, number)
 
     return total_price
