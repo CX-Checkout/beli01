@@ -1,2 +1,2 @@
 - format not precised for skus in CHK_R1
-- the first e
+- the first exercice

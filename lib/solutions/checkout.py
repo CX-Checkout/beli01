@@ -21,6 +21,9 @@ SPECIAL_OFFERS = {
 
 
 def deserialize(skus):
+    if not skus:
+        return []
+
     return skus.replace(' ', '').split(',')
 
 
