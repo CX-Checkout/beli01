@@ -82,3 +82,61 @@ class TestCheckout(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
+{'A': {'count': 2, 'price': 100},
+ 'B': {'count': 1, 'price': 30},
+ 'C': {'count': 2, 'price': 40},
+ 'D': {'count': 2, 'price': 30},
+ 'E': {'count': 2, 'price': 80},
+ 'F': {'count': 2, 'price': 20},
+ 'G': {'count': 2, 'price': 40},
+ 'H': {'count': 2, 'price': 20},
+ 'I': {'count': 2, 'price': 70},
+ 'J': {'count': 2, 'price': 120},
+ 'K': {'count': 2, 'price': 120},
+ 'L': {'count': 2, 'price': 180},
+ 'M': {'count': 2, 'price': 30},
+ 'MIX_STXYZ': {'count': 3, 'price': 45},
+ 'N': {'count': 2, 'price': 80},
+ 'O': {'count': 2, 'price': 20},
+ 'P': {'count': 2, 'price': 100},
+ 'Q': {'count': 2, 'price': 60},
+ 'R': {'count': 2, 'price': 100},
+ 'S': {'count': 0, 'price': 0},
+ 'T': {'count': 0, 'price': 0},
+ 'U': {'count': 2, 'price': 80},
+ 'V': {'count': 2, 'price': 90},
+ 'W': {'count': 2, 'price': 40},
+ 'X': {'count': 1, 'price': 17},
+ 'Y': {'count': 0, 'price': 0},
+ 'Z': {'count': 0, 'price': 0}
+
++------+-------+---------------------------------+
+| Item | Price | Special offers                  |
++------+-------+---------------------------------+
+| A    | 50    | 3A for 130, 5A for 200          |
+| B    | 30    | 2B for 45                       |
+| C    | 20    |                                 |
+| D    | 15    |                                 |
+| E    | 40    | 2E get one B free               |
+| F    | 10    | 2F get one F free               |
+| G    | 20    |                                 |
+| H    | 10    | 5H for 45, 10H for 80           |
+| I    | 35    |                                 |
+| J    | 60    |                                 |
+| K    | 70    | 2K for 120                      |
+| L    | 90    |                                 |
+| M    | 15    |                                 |
+| N    | 40    | 3N get one M free               |
+| O    | 10    |                                 |
+| P    | 50    | 5P for 200                      |
+| Q    | 30    | 3Q for 80                       |
+| R    | 50    | 3R get one Q free               |
+| S    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
+| T    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
+| U    | 40    | 3U get one U free               |
+| V    | 50    | 2V for 90, 3V for 130           |
+| W    | 20    |                                 |
+| X    | 17    | buy any 3 of (S,T,X,Y,Z) for 45 |
+| Y    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
+| Z    | 21    | buy any 3 of (S,T,X,Y,Z) for 45 |
++------+-------+---------------------------------+

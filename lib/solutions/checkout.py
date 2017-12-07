@@ -240,7 +240,7 @@ def checkout(skus):
     for item, information in items_counter.items():
         # For each product, count the total price
         # And add it to the total of each product
-
+        print item, information
         products_price = calculate_price(item, information['count'])
         items_counter[item]['price'] = products_price
 
