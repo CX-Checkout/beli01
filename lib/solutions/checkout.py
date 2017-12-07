@@ -10,8 +10,7 @@ PRICE_UNIT = {
 
 
 SAME_PRODUCT_OFFERS = {
-    'A': [
-        {
+    'A': [{
             'number': 5,
             'price': 200,
             'priority': 1
@@ -66,7 +65,8 @@ def calculate_price(item_type, number):
 
     # Now we know that's a special offer, we should know how many items are affected by the promotions
     offer_information = SAME_PRODUCT_OFFERS[item_type]
-    sorted_offers = sorted(offer_information, key=lambda x: x['priority'])
+    priority_index = 2
+    sorted_offers = sorted(offer_information, key=lambda x: x[priority_index])
 
     item_total_price = 0
     remaining_product_number = number
