@@ -168,29 +168,32 @@ def checkout(skus):
     if not product_list:
         return 0
 
-    # Count the number of items per product
-    items_counter = {i:product_list.count(i) for i in product_list}
+    # Count the number of items per product, and associated price
+    items_counter = {i: {'count': product_list.count(i), 'price': 0} for i in product_list}
     print(items_counter)
     # Fill missing counts
     for item_type in PRICE_UNIT.keys():
         if item_type not in items_counter.keys():
-            items_counter.update({item_type: 0})
+            items_counter.update({item_type: {'count': 0, 'price': 0}})
 
     total_price = 0
 
     for item_type, offer in INTER_PRODUCT_OFFERS.items():
-        offer_nb = items_counter[item_type] / offer['number']
+        offer_nb = items_counter[item_type]['count'] / offer['number']
         target_item_type = offer['target']
         if offer['price'] == 0:
-            nb_remaining_items = items_counter[target_item_type] - offer_nb
+            nb_remaining_items = items_counter[target_item_type]['count'] - offer_nb
             if nb_remaining_items < 0:
                 nb_remaining_items = 0
-            items_counter[target_item_type] = nb_remaining_items
+            items_counter[target_item_type]['count'] = nb_remaining_items
 
-    for item, number in items_counter.items():
+    for item, information in items_counter.items():
         # For each product, count the total price
         # And add it to the total of each product
 
-        total_price += calculate_price(item, number)
+        total_price += calculate_price(item, information['count'])
+
+
+
 
     return total_price
