@@ -125,6 +125,12 @@ def deserialize(skus):
     return skus
 
 
+def mix_and_match_filter(items):
+
+
+    return items
+
+
 def calculate_price(item_type, number):
     print('Calculate price for {}'.format(item_type))
     # First check if there is a special offer.
@@ -173,10 +179,6 @@ def checkout(skus):
     if not product_list:
         return 0
 
-    # Naive approach: because we have 5 items that can be mixed, let's convert the ones in the offer in another fake letter
-
-
-
     # Count the number of items per product, and associated price
     items_counter = {i: {'count': product_list.count(i), 'price': 0} for i in product_list}
     print(items_counter)
@@ -185,8 +187,15 @@ def checkout(skus):
         if item_type not in items_counter.keys():
             items_counter.update({item_type: {'count': 0, 'price': 0}})
 
-    total_price = 0
+    # Naive approach: because we have 5 items that can be mixed, let's convert the ones in the offer in another fake letter
+    # let's first convert our count of these mix-and-match products in a list
+    # {'S': 4, 'T': 1, 'X': 1, 'Y': 2} => [S, S, S, S, T, X, Y, Y]
+    # Then convert the group of 3 in our factice MIX_STXYZ and take the remaining ones that don't enter
+    # in the mix-and-match, [Y, Y] in this case, to give a [MIX_STXYZ, MIX_STXYZ, Y, Y]
+    # and apply the general rules
+    items_counter = mix_and_match_filter(items_counter)
 
+    total_price = 0
     for item_type, offer in INTER_PRODUCT_OFFERS.items():
         offer_nb = items_counter[item_type]['count'] / offer['number']
         target_item_type = offer['target']
