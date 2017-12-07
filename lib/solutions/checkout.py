@@ -134,6 +134,11 @@ def mix_and_match_filter(products):
     # in the mix-and-match, [Y, Y] in this case, to give a [MIX_STXYZ, MIX_STXYZ, Y, Y]
     # and apply the general rules
     unit_product_list = []
+
+    # Only get the items involved in the mix-and-match
+    print products
+    products = [{key, product} for key, product in products if key in INTER_PRODUCT_MIX['products'].keys()]
+
     for item_type, data in products.items():
         unit_product_list += [item_type] * data['count']
 
@@ -152,8 +157,8 @@ def mix_and_match_filter(products):
     converted_list.update({'MIX_STXYZ': number_of_groups_of_3})
 
     products.update(converted_list)
-    
-    return items
+
+    return products
 
 
 def calculate_price(item_type, number):
