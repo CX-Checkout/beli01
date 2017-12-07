@@ -4,7 +4,7 @@ PRICE_UNIT = {
     'A': 50,
     'B': 30,
     'C': 20,
-    'D': 10
+    'D': 15
 }
 
 
@@ -28,13 +28,16 @@ def deserialize(skus):
     if not skus:
         return []
 
+    skus_list = []
+
     # Split different products
-    skus = skus.replace(' ', '').split(',')
+    skus = skus.replace(' ', '')
 
     # Check if they are in the allowed values
     for sku in skus:
         if sku not in PRICE_UNIT.keys():
             raise IllegalInput('Product not recognised')
+        skus_list.append(sku)
 
     return skus
 
