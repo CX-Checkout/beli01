@@ -37,7 +37,7 @@ INTER_PRODUCT_OFFERS = {
         'price': 0
     },
     'F': {
-        'number': 2,
+        'number': 3,
         'target': 'F',
         'price': 0
     }
