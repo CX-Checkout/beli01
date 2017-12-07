@@ -138,6 +138,7 @@ def mix_and_match_filter(products):
     # Only get the items involved in the mix-and-match
     mix_match_products = {key: product for key, product in products.items() if key in INTER_PRODUCT_MIX['products']}
     print(mix_match_products)
+
     for item_type, data in mix_match_products.items():
         unit_product_list += [item_type] * data['count']
 
@@ -145,16 +146,18 @@ def mix_and_match_filter(products):
     number_of_groups_of_3 = len(unit_product_list) / 3
     remaining_letters = len(unit_product_list) % 3
 
+    print(mix_match_products)
+
     remaining_list = unit_product_list[-remaining_letters]
     converted_list = {i: {'count': remaining_list.count(i), 'price': 0} for i in remaining_list}
 
     # Fill missing counts
-    for item_type in INTER_PRODUCT_MIX['products']:
-        if item_type not in converted_list.keys():
-            converted_list.update({item_type: {'count': 0, 'price': 0}})
+    # for item_type in INTER_PRODUCT_MIX['products']:
+    #     if item_type not in converted_list.keys():
+    #         converted_list.update({item_type: {'count': 0, 'price': 0}})
 
     # And add any mix-and-match, if any
-    converted_list.update({'MIX_STXYZ': number_of_groups_of_3})
+    converted_list.update({'MIX_STXYZ': {'count': number_of_groups_of_3, 'price': 0}})
 
     products.update(converted_list)
 
