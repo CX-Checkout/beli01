@@ -20,10 +20,16 @@ SPECIAL_OFFERS = {
 }
 
 
+class IllegalInput(Exception):
+    pass
+
+
 def deserialize(skus):
     if not skus:
         return []
 
+    # Split different products
+    skus =
     return skus.replace(' ', '').split(',')
 
 
@@ -51,10 +57,10 @@ def checkout(skus):
 
     # First extract the skus in a more proper structure to deal with
     # If I'm wrong with the assumed format, this will be the only step to be changed.
-    product_list = deserialize(skus)
-
-    if not product_list:
-        return 0
+    try:
+        product_list = deserialize(skus)
+    except IllegalInput:
+        return -1
 
     # Count the number of items per product
     items_counter = {i:product_list.count(i) for i in product_list}
