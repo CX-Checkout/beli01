@@ -3,7 +3,7 @@
 PRICE_UNIT = {
     'A': 50, 'B': 30, 'C': 20, 'D': 15, 'E': 40, 'F': 10, 'G': 20, 'H': 10, 'I': 35, 'J': 60, 'K': 70, 'L': 90,
     'M': 15, 'N': 40, 'O': 10, 'P': 50, 'Q': 30, 'R': 50, 'S': 20, 'T': 20, 'U': 40, 'V': 50, 'W': 20, 'X': 17,
-    'Y': 20, 'Z': 21
+    'Y': 20, 'Z': 21, 'MIX_STXYZ': -666
 }
 
 
@@ -60,7 +60,12 @@ SAME_PRODUCT_OFFERS = {
             'price': 90,
             'priority': 2
         }
-    ]
+    ],
+    'MIX_STXYZ': [{
+        'number': 3,
+        'price': 45,
+        'priority': 1
+    }]
 }
 
 
@@ -167,6 +172,10 @@ def checkout(skus):
 
     if not product_list:
         return 0
+
+    # Naive approach: because we have 5 items that can be mixed, let's convert the ones in the offer in another fake letter
+
+
 
     # Count the number of items per product, and associated price
     items_counter = {i: {'count': product_list.count(i), 'price': 0} for i in product_list}
