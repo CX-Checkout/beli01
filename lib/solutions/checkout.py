@@ -72,7 +72,7 @@ def calculate_price(item_type, number):
     item_total_price = 0
     remaining_product_number = number
 
-    for special_offer in sorted_offers:
+    for offer_information in sorted_offers:
 
         # Check the number of special offers per product
         number_of_offers = number / offer_information['number']
@@ -103,6 +103,9 @@ def checkout(skus):
 
     # Count the number of items per product
     items_counter = {i:product_list.count(i) for i in product_list}
+
+    # Fill missing counts
+    items_counter
 
     total_price = 0
 
